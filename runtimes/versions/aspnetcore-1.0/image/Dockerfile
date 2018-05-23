@@ -37,9 +37,13 @@ RUN mkdir -p /usr/share/dotnet && \
     curl -sL https://storage.googleapis.com/gcp-aspnetcore-packages/dotnet-dev-ubuntu.16.04-x64.1.1.9-1.0.11.tar.gz | tar -xz -C /usr/share/dotnet/ && \
     ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
+RUN mkdir -p /usr/share/dotnet-debugger && \
+    curl -sL https://storage.googleapis.com/dotnet-debugger/package-7925264.tar.gz | tar -xz -C /usr/share/dotnet-debugger/
+
 # Define the environment variables
 ENV PORT=8080
 ENV ASPNETCORE_URLS=http://*:${PORT}
+ENV LD_LIBRARY_PATH=/usr/share/dotnet-debugger/debugger
 
 # Expose the port for the app.
 EXPOSE $PORT
