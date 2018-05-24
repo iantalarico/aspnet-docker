@@ -44,6 +44,7 @@ RUN mkdir -p /usr/share/dotnet-debugger && \
 ENV PORT=8080
 ENV ASPNETCORE_URLS=http://*:${PORT}
 ENV LD_LIBRARY_PATH=/usr/share/dotnet-debugger/debugger
+ENV STACKDRIVER_DEBUGGER_DEBUGGER=/usr/share/dotnet-debugger/debugger/google_cloud_debugger
 
 # Expose the port for the app.
 EXPOSE $PORT
