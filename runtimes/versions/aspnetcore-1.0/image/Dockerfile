@@ -40,8 +40,7 @@ RUN mkdir -p /usr/share/dotnet && \
 RUN mkdir -p /usr/share/dotnet-debugger && \
     curl -sL https://storage.googleapis.com/dotnet-debugger/package-7925264.tar.gz | tar -xz -C /usr/share/dotnet-debugger/
     
-RUN echo $'#!/bin/sh \n\ 
-start_command= \n\
+RUN echo $'start_command= \n\
 while (( "$#" )); do \n\
   start_command="$start_command $1" \n\
   shift \n\
