@@ -43,8 +43,8 @@ RUN mkdir -p /usr/share/dotnet-debugger && \
 RUN cat >/usr/share/dotnet-debugger/start-debugger.sh <<EOL \
 #!/bin/sh \
 start_command= \
-while (( "$#" )); do \
-  start_command="$start_command $1" \
+while (( \"$#\" )); do \
+  start_command=\"$start_command $1\" \
   shift \
 done \
 $start_command & \
