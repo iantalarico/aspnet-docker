@@ -40,17 +40,9 @@ RUN mkdir -p /usr/share/dotnet && \
 RUN mkdir -p /usr/share/dotnet-debugger && \
     curl -sL https://storage.googleapis.com/dotnet-debugger/package-7925264.tar.gz | tar -xz -C /usr/share/dotnet-debugger/
     
-RUN echo $'start_command= \n\
-while (( "$#" )); do \n\
-  start_command="$start_command $1" \n\
-  shift \n\
-done \n\
-$start_command & \n\
-APP_PID=$(echo $! \n\
-/usr/share/dotnet-debugger/agent/Google.Cloud.Diagnostics.Debug --application-id=$APP_PID \n\
-' > /usr/share/dotnet-debugger/start-debugger.sh
+RUN curl -sL -o /usr/share/dotnet-debugger/start-debugger.sh https://storage.googleapis.com/dotnet-debugger/start-debugger.sh
 
-RUN chmod 777 /usr/share/dotnet-debugger/start-debugger.sh
+RUN chmod a+x /usr/share/dotnet-debugger/start-debugger.sh
 
 # Define the environment variables
 ENV PORT=8080
