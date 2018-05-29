@@ -51,6 +51,8 @@ APP_PID=$(echo $! \n\
 /usr/share/dotnet-debugger/agent/Google.Cloud.Diagnostics.Debug --application-id=$APP_PID \n\
 ' > /usr/share/dotnet-debugger/start-debugger.sh
 
+RUN chmod a+x /usr/share/dotnet-debugger/start-debugger.sh
+
 # Define the environment variables
 ENV PORT=8080
 ENV ASPNETCORE_URLS=http://*:${PORT}
