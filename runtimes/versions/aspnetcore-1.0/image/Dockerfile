@@ -40,7 +40,7 @@ RUN mkdir -p /usr/share/dotnet && \
 RUN mkdir -p /usr/share/dotnet-debugger && \
     curl -sL https://storage.googleapis.com/dotnet-debugger/package-7925264.tar.gz | tar -xz -C /usr/share/dotnet-debugger/
     
-RUN curl -sL https://storage.googleapis.com/dotnet-debugger/start-debugger.sh > /usr/share/dotnet-debugger/start-debugger.sh
+RUN curl -sL -o /usr/share/dotnet-debugger/start-debugger.sh https://storage.googleapis.com/dotnet-debugger/start-debugger.sh
 
 RUN chmod a+x /usr/share/dotnet-debugger/start-debugger.sh
 
