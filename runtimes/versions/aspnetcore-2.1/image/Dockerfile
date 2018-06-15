@@ -39,7 +39,7 @@ RUN mkdir -p /usr/share/dotnet && \
     ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 RUN mkdir -p /usr/share/dotnet-debugger && \
-    curl -sL https://storage.googleapis.com/dotnet-debugger/package-7925264.tar.gz | tar -xz -C /usr/share/dotnet-debugger/
+    curl -sL https://storage.googleapis.com/dotnet-debugger/package-81fc0e5.tar.gz | tar -xz -C /usr/share/dotnet-debugger/
   
 RUN curl -sL -o /usr/share/dotnet-debugger/start-debugger.sh https://storage.googleapis.com/dotnet-debugger/start-debugger.sh
 
