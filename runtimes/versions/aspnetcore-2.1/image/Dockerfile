@@ -38,9 +38,18 @@ RUN mkdir -p /usr/share/dotnet && \
     curl -sL https://storage.googleapis.com/gcp-aspnetcore-packages/dotnet-sdk-2.1.300-linux-x64.tar.gz | tar -xz -C /usr/share/dotnet/ && \
     ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
+RUN mkdir -p /usr/share/dotnet-debugger && \
+    curl -sL https://storage.googleapis.com/dotnet-debugger/package-7925264.tar.gz | tar -xz -C /usr/share/dotnet-debugger/
+  
+RUN curl -sL -o /usr/share/dotnet-debugger/start-debugger.sh https://storage.googleapis.com/dotnet-debugger/start-debugger.sh
+
+RUN chmod a+x /usr/share/dotnet-debugger/start-debugger.sh
+
 # Define the environment variables
 ENV PORT=8080
 ENV ASPNETCORE_URLS=http://*:${PORT}
+ENV LD_LIBRARY_PATH=/usr/share/dotnet-debugger/debugger
+ENV STACKDRIVER_DEBUGGER_DEBUGGER=/usr/share/dotnet-debugger/debugger/google_cloud_debugger
 
 # Expose the port for the app.
 EXPOSE $PORT
